@@ -8,8 +8,8 @@ using App.Persistence;
 namespace App.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20170626225702_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20170626232158_ApplyConstraints")]
+    partial class ApplyConstraints
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,9 @@ namespace App.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
 
                     b.HasKey("Id");
 
@@ -42,7 +44,7 @@ namespace App.Migrations
 
                     b.HasIndex("MakeId");
 
-                    b.ToTable("Model");
+                    b.ToTable("Models");
                 });
 
             modelBuilder.Entity("App.Models.Model", b =>
