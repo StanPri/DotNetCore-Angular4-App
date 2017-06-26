@@ -37,7 +37,7 @@ namespace App.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("DELETE FROM Makes");
+            migrationBuilder.Sql("DELETE FROM Makes WHERE Name IN ('Make1', 'Make2', 'Make3', 'Make4', 'Make5')");
         }
     }
 }
